@@ -3,9 +3,10 @@
               Any modifications will be overwritten.
               To include a user specific buildfile here, simply create one in the same
               directory with the processing instruction <?eclipse.ant.import?>
-              as the first entry and export the buildfile again. --><project basedir="." default="build" name="ICT-Util">
+              as the first entry and export the buildfile again. -->
+<project basedir="." default="build" name="ICT-Util">
     <property environment="env"/>
-    <property name="Crypto.location" value="../IceTurtle Code/ICT-Crypto"/>
+    <property name="Crypto.location" value="../ICT-Crypto"/>
     <property name="debuglevel" value="source,lines,vars"/>
     <property name="target" value="1.8"/>
     <property name="source" value="1.8"/>
@@ -54,10 +55,15 @@
         <property name="build.compiler" value="org.eclipse.jdt.core.JDTCompilerAdapter"/>
         <antcall target="build"/>
     </target>
+    <target name="ScrollableMenu">
+        <java classname="ict.swing.ScrollableMenu" failonerror="true" fork="yes">
+            <classpath refid="ICT-Util.classpath"/>
+        </java>
+    </target>
               	
 	<!-- Added to compressed to jar file --> 
-  	<target name="jar">
-        <jar destfile="bin/Util.jar" basedir="bin">
-        </jar>
+	<target name="jar">
+	    <jar destfile="bin/Util.jar" basedir="bin">
+	    </jar>
 	</target>
 </project>
